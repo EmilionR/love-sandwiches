@@ -76,7 +76,15 @@ def calculate_surface_data(sales_row):
     stock = SHEET.worksheet('stock').get_all_values()
     pprint(stock)
     stock_row = stock[-1]
-    print(stock_row)
+    print(f"Stock row: {stock_row}")
+    print(f"Sales row: {sales_row}")
+
+    surplus_data = []
+    for stock, sales in zip(stock_row, sales_row):
+        surplus = int(stock) - sales
+        surplus_data.append(surplus)
+    
+    return surplus_data
 
 def main():
     """
